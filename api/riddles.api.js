@@ -25,3 +25,14 @@ export async function updateRiddle(update) {
     })
     console.log(res.statusText)
 }
+
+export async function deleteRiddle(idObg) {
+    const res = await fetch("http://localhost:1456", {
+        method: 'DELETE',
+        body: JSON.stringify(idObg),
+        headers: {
+            "content-type": "application/json"
+        }
+    })
+    console.log(res.statusText)
+}
