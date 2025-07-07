@@ -12,5 +12,16 @@ export async function addRiddle(newRiddle) {
             "content-type": "application/json"
         }
     })
-    console.log(res)
+    console.log(res.statusText)
+}
+
+export async function updateRiddle(update) {
+    const res = await fetch("http://localhost:1456", {
+        method: 'PUT',
+        body: JSON.stringify(update),
+        headers: {
+            "content-type": "application/json"
+        }
+    })
+    console.log(res.statusText)
 }
