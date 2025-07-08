@@ -1,11 +1,11 @@
 import { addRiddleApi, getAllRiddlesApi, updateRiddleApi } from "../api/riddles.api";
 
-async function getRiddles() {
+export async function getRiddles() {
     const riddles = await getAllRiddlesApi();
     return riddles
 }
 
-async function createRiddle() {
+export async function createRiddle() {
     const newRiddle = {}
     const rl = readline.createInterface({
         input: process.stdin,
@@ -32,7 +32,12 @@ async function createRiddle() {
     await addRiddleApi(newRiddle)
 }
 
-async function updateRiddle() {
+export async function updateRiddle() {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+        terminal: true
+    })
     const id = await rl.question("Enter the ID of the riddle you want to change: ")
     const riddle = {}
     riddle["id"] = Number(id);
@@ -75,4 +80,15 @@ async function updateRiddle() {
     }
     rl.close()
     await updateRiddleApi(riddle)
+}
+
+export async function deleteRiddle() {
+const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+        terminal: true
+    })
+    const id = await rl.question("Enter the ID of the riddle you want to delete: ")
+    rl.close();
+    updateRiddleApi({"id": id})
 }
