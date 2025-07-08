@@ -1,10 +1,10 @@
-export async function getAllRiddles() {
+export async function getAllRiddlesApi() {
     const res = await fetch("http://localhost:1456")
     const riddles = await res.json()
     console.log(riddles)
 }
 
-export async function addRiddle(newRiddle) {
+export async function addRiddleApi(newRiddle) {
     const res = await fetch("http://localhost:1456", {
         method: 'POST',
         body: JSON.stringify(newRiddle),
@@ -15,7 +15,7 @@ export async function addRiddle(newRiddle) {
     console.log(res.statusText)
 }
 
-export async function updateRiddle(update) {
+export async function updateRiddleApi(update) {
     const res = await fetch("http://localhost:1456", {
         method: 'PUT',
         body: JSON.stringify(update),
@@ -26,7 +26,7 @@ export async function updateRiddle(update) {
     console.log(res.statusText)
 }
 
-export async function deleteRiddle(idObg) {
+export async function deleteRiddleApi(idObg) {
     const res = await fetch("http://localhost:1456", {
         method: 'DELETE',
         body: JSON.stringify(idObg),
