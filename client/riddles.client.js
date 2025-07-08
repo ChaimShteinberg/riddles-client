@@ -1,7 +1,7 @@
-import { addRiddle, getAllRiddles } from "../api/riddles.api";
+import { addRiddleApi, getAllRiddlesApi, updateRiddleApi } from "../api/riddles.api";
 
 async function getRiddles() {
-    const riddles = await getAllRiddles();
+    const riddles = await getAllRiddlesApi();
     return riddles
 }
 
@@ -29,5 +29,50 @@ async function createRiddle() {
     newRiddle["correctAnswer"] = await rl.question("enter the correct answer for the riddle: ");
     newRiddle["hint"] = await rl.question("enter the hint for the riddle: ");
     rl.close();
-    await addRiddle(newRiddle)
+    await addRiddleApi(newRiddle)
+}
+
+async function updateRiddle() {
+    const id = await rl.question("Enter the ID of the riddle you want to change: ")
+    const riddle = {}
+    riddle["id"] = Number(id);
+    while (test) {
+        console.log("Select the value you want to change: \n" +
+            "1. level \n" +
+            "2. name \n" +
+            "3. taskDescription\n" +
+            "4. correctAnswer \n" +
+            "5. hint"
+        )
+        const key = await rl.question("select: (1 - 5)")
+        const value = await rl.question("Enter the change: ")
+
+        switch (key) {
+            case "1":
+                riddle["level"] = value;
+                break;
+            case "2":
+                riddle["name"] = value;
+                break;
+            case "3":
+                riddle["taskDescription"] = value;
+                break;
+            case "4":
+                riddle["correctAnswer"] = value;
+                break;
+            case "5":
+                riddle["hint"] = value;
+                break;
+        }
+        const loop = await rl.question("Do you want to replace another value? (y/n)")
+        switch (loop) {
+            case "y":
+                break;
+            case "n":
+                test = false
+                break;
+        }
+    }
+    rl.close()
+    await updateRiddleApi(riddle)
 }
