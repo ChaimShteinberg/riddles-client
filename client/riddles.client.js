@@ -2,7 +2,7 @@ import { addRiddleApi, getAllRiddlesApi, updateRiddleApi } from "../api/riddles.
 
 export async function getRiddles() {
     const riddles = await getAllRiddlesApi();
-    return riddles
+    console.log(riddles)
 }
 
 export async function createRiddle() {
