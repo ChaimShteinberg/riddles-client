@@ -1,7 +1,7 @@
 export async function getAllRiddlesApi() {
     const res = await fetch("http://localhost:1456/riddles/getAll");
     const riddles = await res.json();
-    console.log(riddles);
+    return riddles;
 }
 
 export async function addRiddleApi(newRiddle) {
@@ -27,6 +27,8 @@ export async function updateRiddleApi(update) {
 }
 
 export async function deleteRiddleApi(id) {
-    const res = await fetch(`http://localhost:1456/riddles/delete/${id}`)
+    const res = await fetch(`http://localhost:1456/riddles/delete/${id}`, {
+        method: 'DELETE'
+    })
     console.log(res.statusText)
 }

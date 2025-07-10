@@ -1,5 +1,5 @@
 import readline from "readline-sync";
-import { addRiddleApi, getAllRiddlesApi, updateRiddleApi } from "../api/riddles.api.js";
+import { addRiddleApi, deleteRiddleApi, getAllRiddlesApi, updateRiddleApi } from "../api/riddles.api.js";
 
 export async function getRiddles() {
     const riddles = await getAllRiddlesApi();
@@ -30,7 +30,8 @@ export async function createRiddle() {
 export async function updateRiddle() {
     const id = readline.question("Enter the ID of the riddle you want to change: ");
     const riddle = {};
-    riddle["id"] = Number(id);
+    riddle["id"] = id;
+    let test = true;
     while (test) {
         console.log("Select the value you want to change: \n" +
             "1. level \n" +
@@ -73,5 +74,5 @@ export async function updateRiddle() {
 
 export async function deleteRiddle() {
     const id = readline.question("Enter the ID of the riddle you want to delete: ")
-    updateRiddleApi(id)
+    await deleteRiddleApi(id)
 }
