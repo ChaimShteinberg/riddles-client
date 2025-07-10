@@ -1,4 +1,4 @@
-import menu from "./client/menu";
+import menu from "./client/menu.js";
 
 function main(){
     menu();
