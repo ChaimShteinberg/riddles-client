@@ -1,8 +1,9 @@
-import play from "./play";
-import { createRiddle, deleteRiddle, getRiddles, updateRiddle } from "./riddles.client";
+import readline from "readline-sync";
+import play from "./play.js";
+import { createRiddle, deleteRiddle, getRiddles, updateRiddle } from "./riddles.client.js";
 
 async function menu(){
-    let test = true
+    let test = true;
     while (test) {
         console.log("What do you want to do?\n" +
             "1. Play the game\n" +
@@ -12,13 +13,7 @@ async function menu(){
             "5. Delete a riddle\n" +
             "6. View leaderboard\n" +
             "0. exit");
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout, 
-            terminal: true
-        })
-        const choose = await rl.question("Choose 0 - 6 ")
-        rl.close();
+        const choose = readline.question("Choose 0 - 6 ");
 
         switch (choose) {
             case "1":
@@ -37,16 +32,16 @@ async function menu(){
                 await deleteRiddle();
                 break;
             case "6":
-                console.log("Not yet defined")
+                console.log("Not yet defined");
                 break;
             case "0":
-                test = false
-                break
+                test = false;
+                break;
             default:
-                console.log("Wrong, Try again")
+                console.log("Wrong, Try again");
                 break;
         }
     }
 }
 
-export default menu
+export default menu;
