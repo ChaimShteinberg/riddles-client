@@ -1,1 +1,1 @@
-# riddels-client
+# riddles-client
