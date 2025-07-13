@@ -1,7 +1,7 @@
 export async function getAllPlayersApi() {
     const res = await fetch("http://localhost:1456/Players/getAll");
-    const Players = await res.json();
-    return Players;
+    const players = await res.json();
+    return players;
 }
 
 export async function addPlayerApi(newPlayer) {
