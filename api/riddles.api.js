@@ -1,11 +1,15 @@
+const serverPath = "https://riddles-server.onrender.com";
+
 export async function getAllRiddlesApi() {
-    const res = await fetch("http://localhost:1456/riddles/getAll");
+    const res = await fetch(`${serverPath}/riddles/getAll`);
     const riddles = await res.json();
     return riddles;
 }
 
+console.log(await getAllRiddlesApi())
+
 export async function addRiddleApi(newRiddle) {
-    const res = await fetch("http://localhost:1456/riddles/create", {
+    const res = await fetch(`${serverPath}/riddles/create`, {
         method: 'POST',
         body: JSON.stringify(newRiddle),
         headers: {
@@ -16,7 +20,7 @@ export async function addRiddleApi(newRiddle) {
 }
 
 export async function updateRiddleApi(update) {
-    const res = await fetch("http://localhost:1456/riddles/update", {
+    const res = await fetch(`${serverPath}/riddles/update`, {
         method: 'PUT',
         body: JSON.stringify(update),
         headers: {
@@ -27,7 +31,7 @@ export async function updateRiddleApi(update) {
 }
 
 export async function deleteRiddleApi(id) {
-    const res = await fetch(`http://localhost:1456/riddles/delete/${id}`, {
+    const res = await fetch(`${serverPath}/riddles/delete/${id}`, {
         method: 'DELETE'
     })
     console.log(res.statusText)
