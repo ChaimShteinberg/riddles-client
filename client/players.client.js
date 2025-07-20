@@ -1,14 +1,13 @@
 import { addPlayerApi, getAllPlayersApi, updatePlayerApi } from '../api/players.api.js'
 
 export async function playerService(username) {
-    while (true) {
-        const platers = await getPlayers();
-        for (const player of platers) {
-            if (player.username === username)
-                return player;
-        };
-        await createPlayer(username);
-    }
+    const platers = await getPlayers();
+    for (const player of platers) {
+        if (player.username === username)
+            return player;
+    };
+    const player = await createPlayer(username);
+    return player
 }
 
 export async function getPlayers() {
@@ -17,9 +16,10 @@ export async function getPlayers() {
 }
 
 export async function createPlayer(username) {
-    await addPlayerApi({ "username": username });
+    const player = await addPlayerApi({ "username": username });
+    return player
 }
 
-export async function updatePlayer(update){
+export async function updatePlayer(update) {
     await updatePlayerApi(update);
 }

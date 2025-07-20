@@ -1,4 +1,4 @@
-const serverPath = "http://localhost:1456";
+const serverPath = process.env.SERVER_PATH;
 
 export async function getAllPlayersApi() {
     const res = await fetch(`${serverPath}/Players/getAll`);
@@ -14,11 +14,12 @@ export async function addPlayerApi(newPlayer) {
             "content-type": "application/json"
         }
     });
-    console.log(res.statusText);
+    const player = await res.json()
+    return player;
 }
 
 export async function updatePlayerApi(update) {
-    console.log(update)
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const res = await fetch(`${serverPath}/Players/update`, {
         method: 'PUT',
         body: JSON.stringify(update),
@@ -26,7 +27,6 @@ export async function updatePlayerApi(update) {
             "content-type": "application/json"
         }
     })
-    console.log(res.status)
     return res.statusText;
 }
 
@@ -34,5 +34,4 @@ export async function deletePlayerApi(id) {
     const res = await fetch(`${serverPath}/Players/delete/${id}`, {
         method: 'DELETE'
     })
-    console.log(res.statusText)
 }

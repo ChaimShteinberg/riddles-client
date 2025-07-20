@@ -1,12 +1,14 @@
 const serverPath = "http://localhost:1456";
 
 export async function getAllRiddlesApi() {
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const res = await fetch(`${serverPath}/riddles/getAll`);
     const riddles = await res.json();
     return riddles;
 }
 
 export async function addRiddleApi(newRiddle) {
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const res = await fetch(`${serverPath}/riddles/create`, {
         method: 'POST',
         body: JSON.stringify(newRiddle),
@@ -18,6 +20,7 @@ export async function addRiddleApi(newRiddle) {
 }
 
 export async function updateRiddleApi(id, update) {
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const res = await fetch(`http://localhost:1456/riddles/update/${id}`, {
         method: 'PUT',
         body: JSON.stringify(update),
