@@ -6,8 +6,6 @@ export async function getAllRiddlesApi() {
     return riddles;
 }
 
-console.log(await getAllRiddlesApi())
-
 export async function addRiddleApi(newRiddle) {
     const res = await fetch(`${serverPath}/riddles/create`, {
         method: 'POST',
