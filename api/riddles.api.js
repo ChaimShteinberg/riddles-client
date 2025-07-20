@@ -1,4 +1,4 @@
-const serverPath = "http://localhost:1456";
+const serverPath = process.env.SERVER_PATH;
 
 export async function getAllRiddlesApi() {
     await new Promise(resolve => setTimeout(resolve, 1000));
