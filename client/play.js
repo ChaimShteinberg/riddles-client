@@ -12,7 +12,7 @@ async function play() {
     // מבקש את שם המשחק ויוצר שחקן
     const username = readline.question("Enter your user name: ");
 
-    const player = playerService(username);
+    const player = await playerService(username);
 
     const myPlayer = new Player(player.username, player.created_at, player.best_time);
 
