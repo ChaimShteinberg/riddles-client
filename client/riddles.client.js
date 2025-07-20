@@ -30,7 +30,6 @@ export async function createRiddle() {
 export async function updateRiddle() {
     const id = readline.question("Enter the ID of the riddle you want to change: ");
     const riddle = {};
-    riddle["id"] = id;
     let test = true;
     while (test) {
         console.log("Select the value you want to change: \n" +
@@ -69,7 +68,7 @@ export async function updateRiddle() {
                 break;
         }
     }
-    await updateRiddleApi(riddle);
+    await updateRiddleApi(id, riddle);
 }
 
 export async function deleteRiddle() {
