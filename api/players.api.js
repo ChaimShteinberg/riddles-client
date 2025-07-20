@@ -1,11 +1,13 @@
+const serverPath = "http://localhost:1456";
+
 export async function getAllPlayersApi() {
-    const res = await fetch("http://localhost:1456/Players/getAll");
+    const res = await fetch(`${serverPath}/Players/getAll`);
     const players = await res.json();
     return players;
 }
 
 export async function addPlayerApi(newPlayer) {
-    const res = await fetch("http://localhost:1456/Players/create", {
+    const res = await fetch(`${serverPath}/Players/create`, {
         method: 'POST',
         body: JSON.stringify(newPlayer),
         headers: {
@@ -16,7 +18,7 @@ export async function addPlayerApi(newPlayer) {
 }
 
 export async function updatePlayerApi(update) {
-    const res = await fetch("http://localhost:1456/Players/update", {
+    const res = await fetch(`${serverPath}/Players/update`, {
         method: 'PUT',
         body: JSON.stringify(update),
         headers: {
@@ -27,7 +29,7 @@ export async function updatePlayerApi(update) {
 }
 
 export async function deletePlayerApi(id) {
-    const res = await fetch(`http://localhost:1456/Players/delete/${id}`, {
+    const res = await fetch(`${serverPath}/Players/delete/${id}`, {
         method: 'DELETE'
     })
     console.log(res.statusText)

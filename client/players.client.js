@@ -1,4 +1,4 @@
-import { addPlayerApi, getAllPlayersApi } from '../api/players.api.js'
+import { addPlayerApi, getAllPlayersApi, updatePlayerApi } from '../api/players.api.js'
 
 export async function playerService(username) {
     while (true) {
@@ -18,4 +18,8 @@ export async function getPlayers() {
 
 export async function createPlayer(username) {
     await addPlayerApi({ "username": username });
+}
+
+export async function updatePlayer(update){
+    await updatePlayerApi(update);
 }

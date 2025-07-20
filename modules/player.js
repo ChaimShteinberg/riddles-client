@@ -18,7 +18,7 @@ export default class Player {
     }
 
     recordTime(time) {
-        if (this.best_time > time || time.best_time === null)
+        if (this.best_time === null || this.best_time > time)
             this.best_time = time;
     }
 }

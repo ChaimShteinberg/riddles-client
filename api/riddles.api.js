@@ -1,4 +1,4 @@
-const serverPath = "localhost:1456";
+const serverPath = "http://localhost:1456";
 
 export async function getAllRiddlesApi() {
     const res = await fetch(`${serverPath}/riddles/getAll`);
