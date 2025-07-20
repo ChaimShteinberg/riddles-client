@@ -18,6 +18,7 @@ export async function addPlayerApi(newPlayer) {
 }
 
 export async function updatePlayerApi(update) {
+    console.log(update)
     const res = await fetch(`${serverPath}/Players/update`, {
         method: 'PUT',
         body: JSON.stringify(update),
@@ -25,7 +26,8 @@ export async function updatePlayerApi(update) {
             "content-type": "application/json"
         }
     })
-    console.log(res.statusText)
+    console.log(res.status)
+    return res.statusText;
 }
 
 export async function deletePlayerApi(id) {
