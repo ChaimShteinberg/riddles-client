@@ -15,8 +15,8 @@ export async function addRiddleApi(newRiddle) {
     console.log(res.statusText);
 }
 
-export async function updateRiddleApi(update) {
-    const res = await fetch("http://localhost:1456/riddles/update", {
+export async function updateRiddleApi(id, update) {
+    const res = await fetch(`http://localhost:1456/riddles/update/${id}`, {
         method: 'PUT',
         body: JSON.stringify(update),
         headers: {
