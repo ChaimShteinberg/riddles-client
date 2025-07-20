@@ -11,6 +11,8 @@ async function play() {
     // מבקש את שם המשחק ויוצר שחקן
     const name = readline.question("Enter your name: ");
 
+    
+
     const myPlayer = new Player(name);
 
     // בחירת קושי
