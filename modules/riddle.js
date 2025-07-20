@@ -13,14 +13,14 @@ export default class Riddle{
     }
 
     // פעילות החידה
-    ask(player){
+    ask(){
         let penalty = 0
 
         // מציג את החידה
         console.log(`Riddle number ${this.id}: \n\n` +
             `The riddle is: ${this.taskDescription}\n`);
         // מפעיל טיימר
-        let start = Date.now();
+        const start = Date.now();
         
         let test = true;
         while (test){
@@ -44,7 +44,7 @@ export default class Riddle{
             console.log("Too slow! 5 seconds penalty applied.");
             penalty += 5;
         }
-        // שומר את משך זמן החידה
-        player.recordTime(start, end, penalty);
+        // מחזיר את משך זמן החידה
+        return (end - start) / 1000 + penalty;
     }
 }   

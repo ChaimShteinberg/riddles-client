@@ -1,18 +1,24 @@
-export default class Player{
-    constructor(name){
-        this.name = name;
-        this.times = [];
+export default class Player {
+    constructor(username, created_at, best_time) {
+        this.username = username,
+        this.created_at = created_at,
+        this.best_time = best_time || null
     }
-    recordTime(start, end, penalty){
-        this.times.push((end - start) / 1000 + penalty);
-    }
-    showStats(){
+
+    showStats(times) {
         let sum = 0;
-        for (const time of this.times){
+        for (const time of times) {
             sum += time;
         }
-        console.log(`Amount: \n\n` + 
-            `Game duration: ${sum} seconds \n` + 
-            `Average time per question: ${sum / this.times.length} seconds\n`);        
+        const average = sum / times.length;
+        console.log(`Amount: \n\n` +
+            `Game duration: ${sum} seconds \n` +
+            `Average time per question: ${average} seconds\n`);
+        this.recordTime(average)
+    }
+
+    recordTime(time) {
+        if (this.best_time > time || time.best_time === null)
+            this.best_time = time;
     }
 }

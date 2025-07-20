@@ -4,4 +4,4 @@ function main(){
     menu();
 }
 
-main()
+main();
