@@ -21,7 +21,7 @@ export async function addRiddleApi(newRiddle) {
 
 export async function updateRiddleApi(id, update) {
     await new Promise(resolve => setTimeout(resolve, 1000));
-    const res = await fetch(`http://localhost:1456/riddles/update/${id}`, {
+    const res = await fetch(`${serverPath}/riddles/update/${id}`, {
         method: 'PUT',
         body: JSON.stringify(update),
         headers: {
