@@ -1,4 +1,4 @@
-const serverPath = "https://riddles-server.onrender.com";
+const serverPath = "localhost:1456";
 
 export async function getAllRiddlesApi() {
     const res = await fetch(`${serverPath}/riddles/getAll`);
