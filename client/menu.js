@@ -1,8 +1,10 @@
 import readline from "readline-sync";
 import play from "./play.js";
 import { createRiddle, deleteRiddle, getRiddles, updateRiddle } from "./riddles.client.js";
+import { leaderboard } from "./players.client.js";
 
-async function menu(){
+
+async function menu() {
     let test = true;
     while (test) {
         console.log("What do you want to do?\n" +
@@ -32,7 +34,7 @@ async function menu(){
                 await deleteRiddle();
                 break;
             case "6":
-                console.log("Not yet defined");
+                await leaderboard();
                 break;
             case "0":
                 test = false;
@@ -43,5 +45,6 @@ async function menu(){
         }
     }
 }
+
 
 export default menu;
