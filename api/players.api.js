@@ -35,3 +35,9 @@ export async function deletePlayerApi(id) {
         method: 'DELETE'
     })
 }
+
+export async function getLeaderboard() {
+    const res = await fetch(`${serverPath}/Players/leaderboard`)
+    const leaderboard = await res.json();
+    return leaderboard;
+}
