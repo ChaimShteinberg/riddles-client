@@ -19,6 +19,10 @@ async function play() {
     // בחירת קושי
     const level = readline.question('Choose difficulty: easy / medium / hard: ');
 
+    if (myPlayer.best_time){
+        console.log(`Your best average time per riddle is ${myPlayer.best_time}`)
+    }
+
     const allRiddles = await getAllRiddlesApi();
     const riddleList = allRiddles.filter(Vriddle => Vriddle.level === level);
 

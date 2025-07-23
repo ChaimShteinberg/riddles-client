@@ -1,8 +1,8 @@
 export default class Player {
     constructor(username, created_at, best_time) {
         this.username = username,
-        this.created_at = created_at || null,
-        this.best_time = best_time || null
+            this.created_at = created_at || null,
+            this.best_time = best_time || null
     }
 
     showStats(times) {
@@ -18,7 +18,9 @@ export default class Player {
     }
 
     recordTime(time) {
-        if (this.best_time === null || this.best_time > time)
+        if (this.best_time === null || this.best_time > time) {
+            console.log(`Your new record is ${time}`);
             this.best_time = time;
+        }
     }
 }
