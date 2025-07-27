@@ -1,19 +1,19 @@
-import readline from 'readline-sync';
+import { rl } from '../client/menu.js';
 
 // מבנה חידה
 
-export default class Riddle{
-    constructor(id, level, name, taskDescription, correctAnswer, hint){
-        this.id = id,
-        this.level = level,
-        this.name = name, 
-        this.taskDescription = taskDescription, 
-        this.correctAnswer = correctAnswer, 
-        this.hint = hint
+export default class Riddle {
+    constructor(id, level, name, taskDescription, correctAnswer, hint) {
+        this.id = id;
+        this.level = level;
+        this.name = name;
+        this.taskDescription = taskDescription;
+        this.correctAnswer = correctAnswer;
+        this.hint = hint;
     }
 
     // פעילות החידה
-    ask(){
+    async ask() {
         let penalty = 0
 
         // מציג את החידה
@@ -21,26 +21,26 @@ export default class Riddle{
             `The riddle is: ${this.taskDescription}\n`);
         // מפעיל טיימר
         const start = Date.now();
-        
+
         let test = true;
-        while (test){
+        while (test) {
             // ממתין לקלט מהמשתמש
-            const Answer = readline.question("Answer the riddle: ");
+            const Answer = await rl.question("Answer the riddle: ");
             // בודק את התשובה ומגיב בהתאם
-            if (Answer === this.correctAnswer){
+            if (Answer === this.correctAnswer) {
                 test = false;
-                console.log("\ncorrect Answer \n");   
-            } else if (Answer === "hint"){
+                console.log("\ncorrect Answer \n");
+            } else if (Answer === "hint") {
                 // אפשרות לרמז
                 console.log(this.hint);
                 penalty += 10;
             } else {
-                console.log("\nWrong, Try again\n");                
+                console.log("\nWrong, Try again\n");
             }
         }
         // סוגר טיימר
         const end = Date.now();
-        if (end - start > 5000){
+        if (end - start > 5000) {
             console.log("Too slow! 5 seconds penalty applied.");
             penalty += 5;
         }

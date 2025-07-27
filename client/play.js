@@ -36,7 +36,7 @@ async function play() {
         // יוצר אוביקט של חידה
         const newriddle = new Riddle(myRiddle.id, myRiddle.level, myRiddle.name, myRiddle.taskDescription, myRiddle.correctAnswer, myRiddle.hint);
         // מפעיל חידה
-        times.push(newriddle.ask());
+        times.push(await newriddle.ask());
     }
     // סיום המשחק
     console.log("You have successfully completed the game!\n");
