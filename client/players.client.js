@@ -1,15 +1,5 @@
 import { addPlayerApi, updatePlayerApi, getLeaderboard, getPlayerApi } from '../api/players.api.js'
 
-// export async function playerService(username) {
-//     const platers = await getPlayers();
-//     for (const player of platers) {
-//         if (player.username === username)
-//             return player;
-//     };
-//     const player = await createPlayer(username);
-//     return player
-// }
-
 export async function getPlayer() {
     const player = await getPlayerApi();
     return player;
@@ -21,7 +11,7 @@ export async function createPlayer(username) {
 }
 
 export async function updatePlayer(update) {
-    await updatePlayerApi(update);
+    console.log(await updatePlayerApi(update));
 }
 
 export async function leaderboard() {

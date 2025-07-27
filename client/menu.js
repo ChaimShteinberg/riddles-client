@@ -46,6 +46,7 @@ export async function menu() {
             case "6": await leaderboard(); break;
             case "0":
                 test = false;
+                rl.close();
                 break;
             default:
                 console.log("Wrong, Try again");

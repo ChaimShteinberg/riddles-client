@@ -15,7 +15,11 @@ export async function getRiddlersByLevelApi(level) {
 
 export async function getAllRiddlesApi() {
     await new Promise(resolve => setTimeout(resolve, 1000));
-    const res = await fetch(`${serverPath}/riddles/getAll`);
+    const res = await fetch(`${serverPath}/riddles/getAll`, {
+        headers: {
+            "authorization": await getToken()
+        }
+    });
     const riddles = await res.json();
     return riddles;
 }
@@ -26,10 +30,11 @@ export async function addRiddleApi(newRiddle) {
         method: 'POST',
         body: JSON.stringify(newRiddle),
         headers: {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "authorization": await getToken()
         }
     });
-    console.log(res.statusText);
+    console.log(await res.text());
 }
 
 export async function updateRiddleApi(id, update) {
@@ -38,15 +43,19 @@ export async function updateRiddleApi(id, update) {
         method: 'PUT',
         body: JSON.stringify(update),
         headers: {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "authorization": await getToken()
         }
     })
-    console.log(res.statusText)
+    console.log(await res.text())
 }
 
 export async function deleteRiddleApi(id) {
     const res = await fetch(`${serverPath}/riddles/delete/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            "authorization": await getToken()
+        }
     })
-    console.log(res.statusText)
+    console.log(await res.text())
 }

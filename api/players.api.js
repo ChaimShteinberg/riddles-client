@@ -30,10 +30,11 @@ export async function updatePlayerApi(update) {
         method: 'PUT',
         body: JSON.stringify(update),
         headers: {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "authorization": await getToken()
         }
     })
-    return res.statusText;
+    return res.text();
 }
 
 export async function deletePlayerApi(id) {
@@ -43,7 +44,11 @@ export async function deletePlayerApi(id) {
 }
 
 export async function getLeaderboard() {
-    const res = await fetch(`${serverPath}/Players/leaderboard`)
+    const res = await fetch(`${serverPath}/Players/leaderboard`, {
+        headers: {
+            "authorization": await getToken()
+        }
+    })
     const leaderboard = await res.json();
     return leaderboard;
 }
