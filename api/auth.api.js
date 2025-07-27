@@ -1,5 +1,16 @@
 const serverPath = process.env.SERVER_PATH;
 
+export async function signinByTokenApi(token) {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    const res = await fetch(`${serverPath}/players/signinByToken`, {
+        headers: {
+            "authorization": token
+        }
+    });
+    const result = await res.json();
+    return await result.bool;
+}
+
 export async function signupApi(user_pass) {
     await new Promise(resolve => setTimeout(resolve, 1000));
     const res = await fetch(`${serverPath}/players/signup`, {

@@ -10,7 +10,7 @@ export const rl = readline.createInterface({
     terminal: false
 });
 
-async function mainMenu() {
+export async function mainMenu() {
     console.log("What do you want to do?\n" +
         "1. sign up\n" +
         "2. sign in\n" +
@@ -54,6 +54,3 @@ export async function menu() {
         }
     }
 }
-
-
-export default mainMenu;

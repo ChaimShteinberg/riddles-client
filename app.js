@@ -1,7 +1,7 @@
-import mainMenu from "./client/menu.js";
+import { signinByToken } from "./token/token.service.js";
 
-function main() {
-    mainMenu();
+async function main() {
+    await signinByToken();
 }
 
-main();
+await main();

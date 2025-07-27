@@ -1,5 +1,5 @@
 import { signinApi, signupApi } from '../api/auth.api.js';
-import mainMenu, { menu, rl } from './menu.js';
+import { mainMenu, menu, rl } from './menu.js';
 import { setToken } from "../token/token.service.js";
 
 export async function signup() {
