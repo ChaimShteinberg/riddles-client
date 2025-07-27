@@ -1,6 +1,6 @@
 import mainMenu from "./client/menu.js";
 
-function main(){
+function main() {
     mainMenu();
 }
 

@@ -1,9 +1,14 @@
-import readline from "readline-sync";
+import readline from 'readline/promises';
 import play from "./play.js";
 import { createRiddle, deleteRiddle, getRiddles, updateRiddle } from "./riddles.client.js";
 import { leaderboard } from "./players.client.js";
 import { signup } from "./auth.client.js";
 
+export const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: false
+});
 
 async function mainMenu() {
     console.log("What do you want to do?\n" +
@@ -11,9 +16,9 @@ async function mainMenu() {
         "2. sign in\n" +
         "3. Play the game\n" +
         "0. exit");
-    const choose = readline.question("Choose 0 - 1 ");
+    const choose = await rl.question("Choose 0 - 1 ");
 
-    switch(choose){
+    switch (choose) {
         case "1": await signup(); break;
     }
 }

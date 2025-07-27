@@ -1,14 +1,10 @@
-import readline from 'readline/promises';
+import { signupApi } from '../api/players.api.js';
+import { rl } from './menu.js';
 
-const rl = readline.createInterface({
-        input: process.stdin, 
-        output: process.stdout
-    });
-
-export async function signup(){
+export async function signup() {
     const username = await rl.question("enter your username: ");
     const password = await rl.question("enter your password: ");
     rl.close();
-    const result = await signupApi({username, password});
-    return result;
+    const result = await signupApi({ username, password });
+    console.log(result);
 }

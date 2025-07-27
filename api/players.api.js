@@ -1,5 +1,17 @@
 const serverPath = process.env.SERVER_PATH;
 
+export async function signupApi(user_pass) {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    const res = await fetch(`${serverPath}/players/signup`, {
+        method: 'POST',
+        body: JSON.stringify(user_pass),
+        headers: {
+            "content-type": "application/json"
+        }
+    });
+    return res.statusText;
+}
+
 export async function getAllPlayersApi() {
     const res = await fetch(`${serverPath}/Players/getAll`);
     const players = await res.json();
