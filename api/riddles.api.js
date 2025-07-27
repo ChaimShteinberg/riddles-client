@@ -1,4 +1,17 @@
+import { getToken } from "../token/token.service.js";
+
 const serverPath = process.env.SERVER_PATH;
+
+export async function getRiddlersByLevelApi(level) {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    const res = await fetch(`${serverPath}/riddles/getRiddlesByLevel/${level}`, {
+        headers: {
+            "authorization": await getToken()
+        }
+    });
+    const riddles = await res.json();
+    return riddles;
+}
 
 export async function getAllRiddlesApi() {
     await new Promise(resolve => setTimeout(resolve, 1000));

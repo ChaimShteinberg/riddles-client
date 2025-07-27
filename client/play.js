@@ -1,4 +1,4 @@
-import { getAllRiddlesApi } from "../api/riddles.api.js";
+import { getRiddlersByLevelApi } from "../api/riddles.api.js";
 import Player from "../modules/player.js";
 import Riddle from "../modules/riddle.js";
 import { rl } from "./menu.js";
@@ -14,18 +14,25 @@ async function play() {
     const myPlayer = new Player(player.username, player.created_at, player.best_time);
 
     // בחירת קושי
-    const level = await rl.question('Choose difficulty: easy / medium / hard: ');
-
-    if (myPlayer.best_time){
+    let test = true;
+    let level;
+    while (test) {
+        level = await rl.question('Choose difficulty: easy / medium / hard: ');
+        if (level === "easy" || level === "medium" || level === "hard") {
+            test = false;
+        } else {
+            console.log("Wrong, Try again");
+        }
+    }
+    if (myPlayer.best_time) {
         console.log(`Your best average time per riddle is ${myPlayer.best_time}`)
     }
 
-    const allRiddles = await getAllRiddlesApi();
-    const riddleList = allRiddles.filter(Vriddle => Vriddle.level === level);
+    const Riddles = await getRiddlersByLevelApi(level);
 
     const times = []
     // רץ על החידות
-    for (const myRiddle of riddleList) {
+    for (const myRiddle of Riddles) {
         // יוצר אוביקט של חידה
         const newriddle = new Riddle(myRiddle.id, myRiddle.level, myRiddle.name, myRiddle.taskDescription, myRiddle.correctAnswer, myRiddle.hint);
         // מפעיל חידה
