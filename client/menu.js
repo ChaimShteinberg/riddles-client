@@ -35,7 +35,7 @@ export async function menu() {
             "5. Delete a riddle\n" +
             "6. View leaderboard\n" +
             "0. exit");
-        const choose = readline.question("Choose 0 - 6 ");
+        const choose = await rl.question("Choose 0 - 6 ");
 
         switch (choose) {
             case "1": await play(); break;

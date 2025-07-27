@@ -1,7 +1,13 @@
+import { getToken } from "../token/token.service.js";
+
 const serverPath = process.env.SERVER_PATH;
 
-export async function getAllPlayersApi() {
-    const res = await fetch(`${serverPath}/Players/getAll`);
+export async function getPlayerApi() {
+    const res = await fetch(`${serverPath}/Players/getPlayer`, {
+        headers: {
+            "authorization": await getToken()
+        }
+    });
     const players = await res.json();
     return players;
 }
@@ -11,7 +17,7 @@ export async function addPlayerApi(newPlayer) {
         method: 'POST',
         body: JSON.stringify(newPlayer),
         headers: {
-            "content-type": "application/json"
+            "content-type": "application/json",
         }
     });
     const player = await res.json()

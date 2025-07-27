@@ -1,6 +1,6 @@
-import { writeFile } from "fs/promises";
 import { signinApi, signupApi } from '../api/auth.api.js';
 import mainMenu, { menu, rl } from './menu.js';
+import { setToken } from "../token/token.service.js";
 
 export async function signup() {
     const username = await rl.question("enter your username: ");
@@ -16,8 +16,8 @@ export async function signin() {
     const result = await signinApi({ username, password });
     console.log(result.message)
     if (result.token) {
-        await writeFile("C:/Users/Chaim0533197133/OneDrive/Documents/programming/projects/riddles-client/token.txt", result.token)
-        // menu();
+        await setToken(result.token)
+        menu();
     } else {
         return mainMenu()
     }

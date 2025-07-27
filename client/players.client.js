@@ -1,18 +1,18 @@
-import { addPlayerApi, getAllPlayersApi, updatePlayerApi, getLeaderboard } from '../api/players.api.js'
+import { addPlayerApi, updatePlayerApi, getLeaderboard, getPlayerApi } from '../api/players.api.js'
 
-export async function playerService(username) {
-    const platers = await getPlayers();
-    for (const player of platers) {
-        if (player.username === username)
-            return player;
-    };
-    const player = await createPlayer(username);
-    return player
-}
+// export async function playerService(username) {
+//     const platers = await getPlayers();
+//     for (const player of platers) {
+//         if (player.username === username)
+//             return player;
+//     };
+//     const player = await createPlayer(username);
+//     return player
+// }
 
-export async function getPlayers() {
-    const players = await getAllPlayersApi();
-    return players;
+export async function getPlayer() {
+    const player = await getPlayerApi();
+    return player;
 }
 
 export async function createPlayer(username) {
