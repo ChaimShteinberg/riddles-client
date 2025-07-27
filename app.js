@@ -1,7 +1,7 @@
-import menu from "./client/menu.js";
+import mainMenu from "./client/menu.js";
 
 function main(){
-    menu();
+    mainMenu();
 }
 
 main();

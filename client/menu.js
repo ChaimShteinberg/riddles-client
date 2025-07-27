@@ -2,7 +2,21 @@ import readline from "readline-sync";
 import play from "./play.js";
 import { createRiddle, deleteRiddle, getRiddles, updateRiddle } from "./riddles.client.js";
 import { leaderboard } from "./players.client.js";
+import { signup } from "./auth.client.js";
 
+
+async function mainMenu() {
+    console.log("What do you want to do?\n" +
+        "1. sign up\n" +
+        "2. sign in\n" +
+        "3. Play the game\n" +
+        "0. exit");
+    const choose = readline.question("Choose 0 - 1 ");
+
+    switch(choose){
+        case "1": await signup(); break;
+    }
+}
 
 async function menu() {
     let test = true;
@@ -18,24 +32,12 @@ async function menu() {
         const choose = readline.question("Choose 0 - 6 ");
 
         switch (choose) {
-            case "1":
-                await play();
-                break;
-            case "2":
-                await createRiddle();
-                break;
-            case "3":
-                await getRiddles();
-                break;
-            case "4":
-                await updateRiddle();
-                break;
-            case "5":
-                await deleteRiddle();
-                break;
-            case "6":
-                await leaderboard();
-                break;
+            case "1": await play(); break;
+            case "2": await createRiddle(); break;
+            case "3": await getRiddles(); break;
+            case "4": await updateRiddle(); break;
+            case "5": await deleteRiddle(); break;
+            case "6": await leaderboard(); break;
             case "0":
                 test = false;
                 break;
@@ -47,4 +49,4 @@ async function menu() {
 }
 
 
-export default menu;
+export default mainMenu;
