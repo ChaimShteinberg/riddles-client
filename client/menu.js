@@ -2,7 +2,7 @@ import readline from 'readline/promises';
 import play from "./play.js";
 import { createRiddle, deleteRiddle, getRiddles, updateRiddle } from "./riddles.client.js";
 import { leaderboard } from "./players.client.js";
-import { signup } from "./auth.client.js";
+import { signin, signup } from "./auth.client.js";
 
 export const rl = readline.createInterface({
     input: process.stdin,
@@ -20,10 +20,11 @@ async function mainMenu() {
 
     switch (choose) {
         case "1": await signup(); break;
+        case "2": await signin(); break;
     }
 }
 
-async function menu() {
+export async function menu() {
     let test = true;
     while (test) {
         console.log("What do you want to do?\n" +
