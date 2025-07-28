@@ -7,8 +7,8 @@ export async function signinByTokenApi(token) {
             "authorization": token
         }
     });
-    const result = await res.json();
-    return await result.bool;
+    const text = await res.text();
+    return text === '"true"';
 }
 
 export async function signupApi(user_pass) {

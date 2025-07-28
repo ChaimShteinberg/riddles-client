@@ -11,7 +11,7 @@ export async function createPlayer(username) {
 }
 
 export async function updatePlayer(update) {
-    console.log(await updatePlayerApi(update));
+    await updatePlayerApi(update);
 }
 
 export async function leaderboard() {

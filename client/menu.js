@@ -7,20 +7,31 @@ import { signin, signup } from "./auth.client.js";
 export const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
-    terminal: false
+    terminal: true
 });
 
 export async function mainMenu() {
-    console.log("What do you want to do?\n" +
-        "1. sign up\n" +
-        "2. sign in\n" +
-        "3. Play the game\n" +
-        "0. exit");
-    const choose = await rl.question("Choose 0 - 1 ");
+    let test = true;
+    while (test) {
+        console.log("What do you want to do?\n" +
+            "1. sign up\n" +
+            "2. sign in\n" +
+            "3. Play the game\n" +
+            "0. exit");
+        const choose = await rl.question("Choose 0 - 3 ");
 
-    switch (choose) {
-        case "1": await signup(); break;
-        case "2": await signin(); break;
+        switch (choose) {
+            case "1": await signup(); break;
+            case "2": await signin(); break;
+            case "3": await play(); break;
+            case "0":
+                test = false;
+                rl.close();
+                break;
+            default:
+                console.log("Wrong, Try again");
+                break;
+        }
     }
 }
 
@@ -46,7 +57,6 @@ export async function menu() {
             case "6": await leaderboard(); break;
             case "0":
                 test = false;
-                rl.close();
                 break;
             default:
                 console.log("Wrong, Try again");

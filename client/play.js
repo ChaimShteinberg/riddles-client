@@ -1,15 +1,23 @@
+import jwt from "jsonwebtoken";
 import { getRiddlersByLevelApi } from "../api/riddles.api.js";
 import Player from "../modules/player.js";
 import Riddle from "../modules/riddle.js";
 import { rl } from "./menu.js";
 import { getPlayer, updatePlayer } from "./players.client.js";
+import { setToken } from "../token/token.service.js";
 
 async function play() {
 
     // הודעת פתיחה
     console.log("Welcome to the riddle game\n");
-
-    const player = await getPlayer();
+    let player;
+    try {
+         player = await getPlayer()
+    } catch {
+        const token = jwt.sign({ username: "Guest", role: "guest" }, process.env.SECRET, { expiresIn: '5m' });
+        await setToken(token);
+        player = {username: "guest"}
+    }
 
     const myPlayer = new Player(player.username, player.created_at, player.best_time);
 

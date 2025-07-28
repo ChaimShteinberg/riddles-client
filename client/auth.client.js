@@ -17,7 +17,7 @@ export async function signin() {
     console.log(result.message)
     if (result.token) {
         await setToken(result.token)
-        menu();
+        await menu();
     } else {
         return mainMenu()
     }
