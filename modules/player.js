@@ -1,8 +1,8 @@
 export default class Player {
     constructor(username, created_at, best_time) {
-        this.username = username,
-            this.created_at = created_at || null,
-            this.best_time = best_time || null
+        this.username = username;
+        this.created_at = created_at || null;
+        this.best_time = best_time || null;
     }
 
     showStats(times) {
