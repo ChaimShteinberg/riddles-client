@@ -33,6 +33,6 @@ export async function signinApi(user_pass) {
             "content-type": "application/json"
         }
     });
-    const result = res.json();
+    const result = await res.json();
     return result;
 }
